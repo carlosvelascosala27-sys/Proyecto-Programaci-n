@@ -31,6 +31,10 @@ public class Pedido {
         return importeTotal;
     }
 
+    public PasarelaDePago getPago(){
+        return pago;
+    }
+
     public boolean agregarProducto(Producto producto) {
         if (estado == EstadoPedido.PAGADO) {
             return false;
@@ -104,8 +108,9 @@ public class Pedido {
     public String toString() {
         String contenido = "";
 
-        contenido += "CANT.\tPRODUCTO\tPRECIO UD.\tTOTAL\n";
-        contenido += "==============================================\n";
+        contenido += String.format("%-5s %-12s %-12s %-8s\n",
+                "CANT.", "PRODUCTO", "PRECIO UD.", "TOTAL");
+        contenido += "===============================================\n";
 
 
         ArrayList<String> lista = new ArrayList<>();
@@ -124,13 +129,16 @@ public class Pedido {
 
                 totalProductos = Math.round(totalProductos * 100.0) / 100.0;
 
-                contenido += cantidad + "\t" + nombre + "\t" + precioUnidad + "\t" + totalProductos + "\n";
+                contenido += String.format("%-5d %-12s %-12.2f %-8.2f\n",
+                        cantidad, nombre, precioUnidad, totalProductos);
+
                 lista.add(nombre);
             }
         }
 
         contenido += "==============================================\n";
-        contenido += "TOTAL: " + this.importeTotal + " €\n";
+        contenido += "TOTAL --------------------------------------------> "
+                + String.format("%.2f", this.importeTotal) + " €\n";
 
         return contenido;
 
