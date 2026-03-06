@@ -14,7 +14,7 @@ public class Main {
         gestion.agregarProducto(new Producto("PIZZA", 7.55));
 
 
-        Cliente c1 = new Cliente("Carlos", "Perez", "776245688", "Calle Mayor");
+        Cliente c1 = new Cliente("Antonio", "Velasco Sala", "630414951", "Calle Francisco Ruíz");
         gestion.agregarCliente(c1);
 
         while (true) {
