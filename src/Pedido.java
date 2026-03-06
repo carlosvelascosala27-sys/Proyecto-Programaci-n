@@ -15,6 +15,18 @@ public class Pedido {
         this.importeTotal = 0;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public EstadoPedido getEstado() {
+        return estado;
+    }
+
+    public Date getFechaHora() {
+        return fechaHora;
+    }
+
     public boolean agregarProducto(Producto producto) {
         if (estado == EstadoPedido.PAGADO) {
             return false;
