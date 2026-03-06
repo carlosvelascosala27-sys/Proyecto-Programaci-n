@@ -27,6 +27,10 @@ public class Pedido {
         return fechaHora;
     }
 
+    public double getImporteTotal() {
+        return importeTotal;
+    }
+
     public boolean agregarProducto(Producto producto) {
         if (estado == EstadoPedido.PAGADO) {
             return false;
