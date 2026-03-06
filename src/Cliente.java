@@ -18,6 +18,10 @@ public class Cliente {
         this.historial = new ArrayList<>();
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
     public boolean agregarPedido(Pedido pedido) {
         if(pedido == null) {
             return false;
