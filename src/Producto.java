@@ -10,8 +10,8 @@ public class Producto {
 
         if (precio <= 0) {
             this.precio = 0;
-        }else {
-            this.precio = Math.round(precio * 100) / 100;
+        } else {
+            this.precio = Math.round(precio * 100.0) / 100.0;
         }
     }
 
