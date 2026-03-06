@@ -1,4 +1,6 @@
-package PACKAGE_NAME;
-
-public class EstadoPedido {
+public enum EstadoPedido {
+    PAGADO,
+    PREPARANDO,
+    LISTO,
+    SERVIDO,
 }
