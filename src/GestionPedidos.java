@@ -30,4 +30,23 @@ public class GestionPedidos {
 
         return null;
     }
+
+    public void mostrarProductos() {
+
+        for (int i = 0; i < productos.size(); i++) {
+
+            Producto p = productos.get(i);
+
+            System.out.println((i + 1) + ".- " + p.getNombre() + "   " + p.getPrecio() + "€");
+        }
+    }
+
+    public Producto obtenerProducto(int posicion) {
+
+        if (posicion < 1 || posicion > productos.size()) {
+            return null;
+        }
+
+        return productos.get(posicion - 1);
+    }
 }
