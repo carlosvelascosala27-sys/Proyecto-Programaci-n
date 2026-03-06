@@ -23,18 +23,38 @@ public class PasarelaDePago {
     }
 
     public boolean pagoEfectivo(double cantidadEntrega) {
+
         if (this.importe == 0) {
             return false;
         }
-
-        cantidadEntrega = Math.round(cantidadEntrega * 100.0) / 100.0;
 
         if (cantidadEntrega < this.importe) {
             return false;
         }
 
-        double cambioImporte = cantidadEntrega - this.importe;
-        cambioImporte = Math.round(cambioImporte * 100.0) / 100.0;
+        double cambio = cantidadEntrega - this.importe;
+        cambio = Math.round(cambio * 100.0) / 100.0;
+
+        int centimos = (int) Math.round(cambio * 100);
+        int billetes50 = centimos / 5000;
+        centimos %= 5000;
+        int billetes20 = centimos / 2000;
+        centimos %= 2000;
+        int billetes10 = centimos / 1000;
+        centimos %= 1000;
+        int billetes5 = centimos / 500;
+        centimos %= 500;
+        int monedas1 = centimos / 100;
+        centimos %= 100;
+
+        System.out.println("\nSU CAMBIO");
+        System.out.println("******************");
+        System.out.println("50€ -> " + billetes50);
+        System.out.println("20€ -> " + billetes20);
+        System.out.println("10€ -> " + billetes10);
+        System.out.println("5€ -> " + billetes5);
+        System.out.println("1€ -> " + monedas1);
+        System.out.println("cent -> " + centimos);
 
         this.codigoPago = new Date().getTime();
         this.importe = 0;
