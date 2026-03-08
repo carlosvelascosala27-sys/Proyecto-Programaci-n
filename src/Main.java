@@ -96,43 +96,42 @@ public class Main {
                 System.out.print("¿Quisiera usted continuar? (Si/No): ");
                 String continuar = sc.nextLine();
 
+
+                //Poder escribir si o no, sin importar que sea mayúscula o minúscula
                 if (continuar.equalsIgnoreCase("Si")) {
 
-                    //Mostrar importe total
-                    System.out.println("IMPORTE " + pedido.getImporteTotal() + " €");
+                    boolean pagado = false;
 
-                    //Opciones para pagar el pedido
-                    System.out.println("1.- EFECTIVO");
-                    System.out.println("2.- TARJETA");
-                    System.out.println("3.- CUENTA");
+                    //Bucle de pasarela de pagos
+                    while (!pagado) {
+                        System.out.println("IMPORTE " + pedido.getImporteTotal() + " €");
+                        System.out.println("1.- EFECTIVO");
+                        System.out.println("2.- TARJETA");
+                        System.out.println("3.- CUENTA");
 
-                    System.out.print("Seleccione un metodo de pago: ");
-                    int metodo = Integer.parseInt(sc.nextLine());
+                        System.out.print("Seleccione un metodo de pago: ");
+                        int metodo = Integer.parseInt(sc.nextLine());
 
-                    //Dato necesario para el pago (tarjeta, cuenta o cantidad)
-                    System.out.print("Introduce el dato de pago: ");
-                    String dato = sc.nextLine();
+                        System.out.print("Introduce el dato de pago: ");
+                        String dato = sc.nextLine();
 
-                    boolean pagado = pedido.pagar(metodo, dato);
+                        pagado = pedido.pagar(metodo, dato);
 
-                    //Si el pago es correcto se guarda el pedido en el historial
-                    if (pagado) {
+                        if (pagado) {
+                            cliente.agregarPedido(pedido);
+                            System.out.println("OPERACION REALIZADA CON EXITO.");
 
-                        cliente.agregarPedido(pedido);
+                            long codigo = pedido.getPago().getCodigoPago();
+                            Date fecha = pedido.getFechaHora();
+                            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
-                        System.out.println("OPERACION REALIZADA CON EXITO.");
+                            System.out.println("PEDIDO: " + codigo + "   FECHA: " + formato.format(fecha) + "   ESTADO: " + pedido.getEstado());
 
-                        //Mostrar información del pedido realizado
-                        long codigo = pedido.getPago().getCodigoPago();
-                        Date fecha = pedido.getFechaHora();
-                        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-
-                        System.out.println("PEDIDO: " + codigo + "   FECHA: " + formato.format(fecha) + "   ESTADO: " + pedido.getEstado());
-                        pagar = true;
-
-                    } else {
-                        System.out.println("ERROR EN EL PAGO.");
+                        } else {
+                            System.out.println("ERROR EN EL PAGO. Intente otro metodo.");
+                        }
                     }
+                    pagar = true;
                 }
             }
         }
