@@ -108,8 +108,9 @@ public class Pedido {
     public String toString() {
         String contenido = "";
 
-        contenido += String.format("%-5s %-12s %-12s %-8s\n",
-                "CANT.", "PRODUCTO", "PRECIO UD.", "TOTAL");
+        //Alinear los datos según como nos piden, reclcar que desconocía este forma de colocar los números,
+        // gracias a videos y la ia me han ayudado a colocar mejor los números
+        contenido += String.format("%-5s %-12s %-12s %-8s\n", "CANT.", "PRODUCTO", "PRECIO UD.", "TOTAL");
         contenido += "===============================================\n";
 
 
@@ -129,8 +130,7 @@ public class Pedido {
 
                 totalProductos = Math.round(totalProductos * 100.0) / 100.0;
 
-                contenido += String.format("%-5d %-12s %-12.2f %-8.2f\n",
-                        cantidad, nombre, precioUnidad, totalProductos);
+                contenido += String.format("%-5d %-12s %-12.2f %-8.2f\n", cantidad, nombre, precioUnidad, totalProductos);
 
                 lista.add(nombre);
             }
