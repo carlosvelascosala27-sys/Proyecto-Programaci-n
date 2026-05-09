@@ -1,10 +1,10 @@
 import java.util.Date;
-
+import java.io.Serializable;
 /**
  * Clase que simula una pasarela de pagos.
  * Se encarga de realizar el pago de un pedido mediante efectivo, tarjeta o cuenta bancaria.
  */
-public class PasarelaDePago {
+public class PasarelaDePago implements Serializable {
 
     //Importe que se debe pagar
     private double importe;
