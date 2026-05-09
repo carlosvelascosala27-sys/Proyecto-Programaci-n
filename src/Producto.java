@@ -1,8 +1,9 @@
+import java.io.Serializable;
 /**
  * Clase que representa un producto que se puede pedir.
  * Cada producto tiene un nombre y un precio.
  */
-public class Producto {
+public class Producto implements Serializable {
 
     //Nombre del producto
     private String nombre;
