@@ -2,18 +2,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-<<<<<<< HEAD
+
 /**
  * Clase que representa un pedido de un cliente.
  * Un pedido contiene los productos elegidos y el importe total.
  * También se encarga de realizar el pago.
  */
-public class Pedido {
+
+
+public class Pedido implements Serializable {
 
     //Cliente que realiza el pedido
-=======
-public class Pedido implements Serializable {
->>>>>>> Pedido
     private Cliente cliente;
 
     //Lista de productos que contiene el pedido
