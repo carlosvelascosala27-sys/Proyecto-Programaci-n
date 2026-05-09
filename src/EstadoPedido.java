@@ -1,8 +1,9 @@
+import java.io.Serializable;
 /**
  * Enum que representa los diferentes estados de un pedido.
  * Un pedido va pasando por estos estados durante el proceso.
  */
-public enum EstadoPedido {
+public enum EstadoPedido implements  Serializable {
 
     //El pedido ya ha sido pagado
     PAGADO,
