@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -5,7 +6,7 @@ import java.util.Date;
  * Clase que representa un cliente del sistema.
  * Guarda los datos del cliente y su historial de pedidos.
  */
-public class Cliente {
+public class Cliente implements Serializable {
 
     private String nombre;
     private String apellidos;
