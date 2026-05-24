@@ -21,6 +21,17 @@ public class Main {
         //Objeto que gestiona clientes y productos
         GestionPedidos gestion = new GestionPedidos();
 
+        System.out.println("¿Quieres guardar los archivos? (Responde: Si/No)");
+        String cargar = sc.nextLine();
+
+        if(cargar.equalsIgnoreCase("Si")) {
+            System.out.println("Pon un nombre al fichero: ");
+            String nombreFichero = sc.nextLine();
+            gestion.recuperar(nombreFichero);
+        }
+
+
+
         //Productos disponibles en el sistema
         gestion.agregarProducto(new Producto("AGUA", 0.35));
         gestion.agregarProducto(new Producto("BOCADILLO", 3.55));
@@ -42,6 +53,13 @@ public class Main {
 
             //Si el usuario escribe 0 se termina el programa
             if (telefono.equals("0")) {
+                System.out.println("¿Quisieras guardar los datos de la compra? (Si/No)");
+                String guardar = sc.nextLine();
+                if(guardar.equalsIgnoreCase("Si")){
+                    System.out.println("Pon el nombre que quieras al fichero:" );
+                    String nombreFichero = sc.nextLine();
+                    gestion.guardar(nombreFichero);
+                }
                 System.out.println("GRACIAS POR USAR NUESTRO SOFTWARE!");
                 break;
             }
