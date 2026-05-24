@@ -1,4 +1,10 @@
 import java.util.ArrayList;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * Clase que se encarga de gestionar los clientes y los productos.
@@ -70,4 +76,47 @@ public class GestionPedidos {
         }
         return productos.get(posicion - 1);
     }
+
+    /**
+     * Guarda los datos de los clientes y de los productos en un fichero
+     */
+    public void guardar(String fichero){
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = new FileOutputStream(fichero);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(clientes);
+            oos.writeObject(productos);
+            oos.close();
+            fos.close();
+            System.out.println("Se ha guardado el archivo");
+        }catch (IOException e) {
+            System.out.println("Error al guardar el archivo");
+        }
+    }
+
+    /**
+     * Recupera los datos de los clientes y de los productos del fichero
+     */
+    public void recuperar(String fichero){
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try{
+            fis = new FileInputStream(fichero);
+            ois = new ObjectInputStream(fis);
+            clientes = (ArrayList<Cliente>) ois.readObject();
+            productos = (ArrayList<Producto>) ois.readObject();
+            ois.close();
+            fis.close();
+            System.out.println("Se ha recuperado el archivo");
+
+        }catch (IOException e){
+            System.out.println("Error al recuperar el archivo");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error al recuperar el archivo");
+        }
+    }
+
+
 }
