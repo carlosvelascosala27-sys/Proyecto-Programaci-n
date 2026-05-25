@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
@@ -116,6 +117,56 @@ public class GestionPedidos {
         } catch (ClassNotFoundException e) {
             System.out.println("Error al recuperar el archivo");
         }
+    }
+
+    /**
+     * Busca un producto a partir del nombre introducido
+     * Si no llega a existir le devuelve null al usuario
+     */
+    public Producto buscarProducto(String nombre){
+        for (int i = 0; i < productos.size(); i++){
+            Producto p = productos.get(i);
+            if(p.getNombre().equals(nombre)){
+                return p;
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * Saca los datos de una archivo para leerlo y agrega datos pero sin duplicar datos
+     */
+    public void recuperarAgregar(String fichero){
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try{
+            fis = new FileInputStream(fichero);
+            ois = new ObjectInputStream(fis);
+            ArrayList<Cliente> clientesTemporales = (ArrayList<Cliente>) ois.readObject(); //Se crean listas temporales para guardar los datos para luego guardarlo en el fichero
+            ArrayList<Producto> productosTemporales = (ArrayList<Producto>) ois.readObject();
+            ois.close();
+            fis.close();
+            for (int i = 0; i < clientesTemporales.size(); i++) {
+                Cliente c = clientesTemporales.get(i);
+                if (buscarCliente(c.getTelefono()) == null){
+                    clientes.add(c);
+                }
+            }
+            for (int i = 0; i < productosTemporales.size(); i++) {
+                Producto p = productosTemporales.get(i);
+                if (buscarProducto(p.getNombre()) == null) {
+                    productos.add(p);
+                }
+            }
+            System.out.println("Se han guardado los datos de manera existosa en el fichero: " + fichero);
+
+        } catch (IOException e) {
+            System.out.println("Error al recuperar el archivo");;
+        }catch (ClassNotFoundException e){
+            System.out.println("Errpr al recuperar el archivo");
+        }
+
     }
 
 
