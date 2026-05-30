@@ -45,6 +45,20 @@ public class Cliente implements Serializable {
     }
 
     /**
+     * Devuelve el nombre del cliente.
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * Devuelve los apellidos del cliente.
+     */
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    /**
      * Devuelve el historial de pedidos del cliente.
      */
     public ArrayList<Pedido> getHistorial(){
