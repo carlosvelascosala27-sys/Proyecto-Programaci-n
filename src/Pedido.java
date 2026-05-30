@@ -68,6 +68,10 @@ public class Pedido implements Serializable {
         return importeTotal;
     }
 
+    public ArrayList<Producto> getProductos(){
+        return productos;
+    }
+
     /**
      * Devuelve la pasarela de pago asociada al pedido.
      */

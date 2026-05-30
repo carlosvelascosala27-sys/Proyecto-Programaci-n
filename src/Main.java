@@ -45,7 +45,7 @@ public class Main {
         while (true) {
 
             //Menú principal
-            System.out.println("0- SALIR");
+            System.out.println("\n0- SALIR");
             System.out.println("1- INTRODUCIR TELEFONO");
             System.out.println("2- CARGAR MAS DATOS");
             System.out.println("3- VER DATOS");

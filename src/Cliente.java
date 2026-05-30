@@ -36,6 +36,10 @@ public class Cliente implements Serializable {
         return telefono;
     }
 
+    public ArrayList<Pedido> getHistorial(){
+        return historial;
+    }
+
     /**
      * Añade un pedido al historial del cliente.
      * Solo se añade si el pedido es válido y está pagado.

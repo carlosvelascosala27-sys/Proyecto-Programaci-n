@@ -133,14 +133,30 @@ public class GestionPedidos {
         return null;
     }
 
-    public void mostrarDatos(){
-        System.out.println("Los clientes: ");
-        for (int i = 0; i < clientes.size(); i++){
-            System.out.println(clientes.get(i).getTelefono());
-        }
-        System.out.println("Los productos que hay: ");
-        for (int i = 0; i < productos.size(); i++){
-            System.out.println(productos.get(i).getNombre());
+    public void mostrarDatos() {
+        System.out.println("Clientes: ");
+        for (int i = 0; i < clientes.size(); i++) {
+            Cliente c = clientes.get(i);
+            System.out.println(c.getTelefono());
+            ArrayList<Pedido> historial = c.getHistorial();
+            for (int j = 0; j < historial.size(); j++) {
+                Pedido p = historial.get(j);
+                ArrayList<Producto> productos = p.getProductos();
+                ArrayList<String> vistos = new ArrayList<>();
+                for (int k = 0; k < productos.size(); k++) {
+                    String nombre = productos.get(k).getNombre();
+                    if (!vistos.contains(nombre)) {
+                        int cantidad = 0;
+                        for (int l = 0; l < productos.size(); l++) {
+                            if (productos.get(l).getNombre().equals(nombre)) {
+                                cantidad++;
+                            }
+                        }
+                        System.out.println(cantidad + "- " + nombre);
+                        vistos.add(nombre);
+                    }
+                }
+            }
         }
     }
 
