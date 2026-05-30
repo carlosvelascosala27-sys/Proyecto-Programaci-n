@@ -133,6 +133,17 @@ public class GestionPedidos {
         return null;
     }
 
+    public void mostrarDatos(){
+        System.out.println("Los clientes: ");
+        for (int i = 0; i < clientes.size(); i++){
+            System.out.println(clientes.get(i).getTelefono());
+        }
+        System.out.println("Los productos que hay: ");
+        for (int i = 0; i < productos.size(); i++){
+            System.out.println(productos.get(i).getNombre());
+        }
+    }
+
 
     /**
      * Saca los datos de una archivo para leerlo y agrega datos pero sin duplicar datos
@@ -143,23 +154,23 @@ public class GestionPedidos {
         try{
             fis = new FileInputStream(fichero);
             ois = new ObjectInputStream(fis);
-            ArrayList<Cliente> clientesTemporales = (ArrayList<Cliente>) ois.readObject(); //Se crean listas temporales para guardar los datos para luego guardarlo en el fichero
-            ArrayList<Producto> productosTemporales = (ArrayList<Producto>) ois.readObject();
+            ArrayList<Cliente> clientesFichero = (ArrayList<Cliente>) ois.readObject(); //Se crean listas temporales para guardar los datos para luego guardarlo en el fichero
+            ArrayList<Producto> productosFichero = (ArrayList<Producto>) ois.readObject();
             ois.close();
             fis.close();
-            for (int i = 0; i < clientesTemporales.size(); i++) {
-                Cliente c = clientesTemporales.get(i);
+            for (int i = 0; i < clientesFichero.size(); i++) {
+                Cliente c = clientesFichero.get(i);
                 if (buscarCliente(c.getTelefono()) == null){
                     clientes.add(c);
                 }
             }
-            for (int i = 0; i < productosTemporales.size(); i++) {
-                Producto p = productosTemporales.get(i);
+            for (int i = 0; i < productosFichero.size(); i++) {
+                Producto p = productosFichero.get(i);
                 if (buscarProducto(p.getNombre()) == null) {
                     productos.add(p);
                 }
             }
-            System.out.println("Se han guardado los datos de manera existosa en el fichero: " + fichero);
+            System.out.println("Se han guardado los datos de manera existosa en el fichero (Felicidades): " + fichero);
 
         } catch (IOException e) {
             System.out.println("Error al recuperar el archivo");;
