@@ -6,12 +6,17 @@ import java.util.Scanner;
  * Clase principal del programa.
  * Desde aquí se ejecuta toda la aplicación de gestión de pedidos.
  * Permite introducir el teléfono del cliente, hacer pedidos y pagarlos.
+ *
+ * @author Carlos Velasco Sala
+ * @since 1.0
  */
 public class Main {
 
     /**
      * Método principal del programa.
      * Controla todo el sistema: buscar cliente, realizar pedido, añadir productos y pagar.
+     *
+     * @param args argumentos de la línea de comandos
      */
     public static void main(String[] args) {
 

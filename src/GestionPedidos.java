@@ -10,6 +10,9 @@ import java.io.IOException;
 /**
  * Clase que se encarga de gestionar los clientes y los productos.
  * Desde aquí se pueden buscar clientes y mostrar los productos disponibles.
+ *
+ * @author Carlos Velasco Sala
+ * @since 1.0
  */
 public class GestionPedidos {
 
@@ -30,6 +33,8 @@ public class GestionPedidos {
 
     /**
      * Añade un cliente al sistema.
+     *
+     * @param cliente cliente que se quiere añadir
      */
     public void agregarCliente(Cliente cliente) {
         clientes.add(cliente);
@@ -37,6 +42,8 @@ public class GestionPedidos {
 
     /**
      * Añade un producto al sistema.
+     *
+     * @param producto producto que se quiere añadir
      */
     public void agregarProducto(Producto producto) {
         productos.add(producto);
@@ -45,6 +52,8 @@ public class GestionPedidos {
     /**
      * Busca un cliente a partir de su teléfono.
      * Si no existe devuelve null.
+     *
+     * @param telefono teléfono del cliente a buscar
      */
     public Cliente buscarCliente(String telefono) {
         for (int i = 0; i < clientes.size(); i++) {
@@ -70,6 +79,8 @@ public class GestionPedidos {
     /**
      * Devuelve un producto según la posición elegida.
      * Si la posición no es válida devuelve null.
+     *
+     * @param posicion posición del producto en la lista
      */
     public Producto obtenerProducto(int posicion) {
         if (posicion < 1 || posicion > productos.size()) {
@@ -79,7 +90,9 @@ public class GestionPedidos {
     }
 
     /**
-     * Guarda los datos de los clientes y de los productos en un fichero
+     * Guarda los datos de los clientes y de los productos en un fichero.
+     *
+     * @param fichero nombre del fichero donde guardar
      */
     public void guardar(String fichero){
         FileOutputStream fos = null;
@@ -98,7 +111,9 @@ public class GestionPedidos {
     }
 
     /**
-     * Recupera los datos de los clientes y de los productos del fichero
+     * Recupera los datos de los clientes y de los productos del fichero.
+     *
+     * @param fichero nombre del fichero del que recuperar
      */
     public void recuperar(String fichero){
         FileInputStream fis = null;
@@ -120,8 +135,10 @@ public class GestionPedidos {
     }
 
     /**
-     * Busca un producto a partir del nombre introducido
-     * Si no llega a existir le devuelve null al usuario
+     * Busca un producto a partir del nombre introducido.
+     * Si no llega a existir le devuelve null al usuario.
+     *
+     * @param nombre nombre del producto a buscar
      */
     public Producto buscarProducto(String nombre){
         for (int i = 0; i < productos.size(); i++){
@@ -133,6 +150,9 @@ public class GestionPedidos {
         return null;
     }
 
+    /**
+     * Muestra los clientes cargados y los productos que han pedido.
+     */
     public void mostrarDatos() {
         System.out.println("Clientes: ");
         for (int i = 0; i < clientes.size(); i++) {
@@ -162,7 +182,9 @@ public class GestionPedidos {
 
 
     /**
-     * Saca los datos de una archivo para leerlo y agrega datos pero sin duplicar datos
+     * Saca los datos de un fichero y los agrega sin duplicar datos.
+     *
+     * @param fichero nombre del fichero del que cargar los datos
      */
     public void recuperarAgregar(String fichero){
         FileInputStream fis = null;

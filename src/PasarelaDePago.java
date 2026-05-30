@@ -3,6 +3,9 @@ import java.io.Serializable;
 /**
  * Clase que simula una pasarela de pagos.
  * Se encarga de realizar el pago de un pedido mediante efectivo, tarjeta o cuenta bancaria.
+ *
+ * @author Carlos Velasco Sala
+ * @since 1.0
  */
 public class PasarelaDePago implements Serializable {
 
@@ -15,6 +18,8 @@ public class PasarelaDePago implements Serializable {
     /**
      * Constructor de la pasarela de pago.
      * Recibe el importe que se debe pagar.
+     *
+     * @param importe cantidad a pagar
      */
     public PasarelaDePago(double importe) {
 
@@ -47,6 +52,8 @@ public class PasarelaDePago implements Serializable {
     /**
      * Método para pagar en efectivo.
      * Calcula el cambio y lo muestra por pantalla.
+     *
+     * @param cantidadEntrega dinero entregado por el cliente
      */
     public boolean pagoEfectivo(double cantidadEntrega) {
 
@@ -98,6 +105,8 @@ public class PasarelaDePago implements Serializable {
     /**
      * Método para pagar con tarjeta.
      * Comprueba que el número de tarjeta sea válido.
+     *
+     * @param numeroTarjeta número de la tarjeta bancaria
      */
     public boolean pagoTarjeta(String numeroTarjeta) {
 
@@ -144,6 +153,8 @@ public class PasarelaDePago implements Serializable {
 
     /**
      * Método para pagar con número de cuenta bancaria.
+     *
+     * @param numeroCuenta número de cuenta bancaria
      */
     public boolean pagoCuenta(String numeroCuenta) {
         if (this.importe == 0) {

@@ -2,14 +2,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-
 /**
  * Clase que representa un pedido de un cliente.
  * Un pedido contiene los productos elegidos y el importe total.
  * También se encarga de realizar el pago.
+ *
+ * @author Carlos Velasco Sala
+ * @since 1.0
  */
-
-
 public class Pedido implements Serializable {
 
     //Cliente que realiza el pedido
@@ -33,6 +33,8 @@ public class Pedido implements Serializable {
     /**
      * Constructor del pedido.
      * Recibe el cliente que realiza el pedido.
+     *
+     * @param cliente cliente que realiza el pedido
      */
     public Pedido(Cliente cliente) {
         this.cliente = cliente;
@@ -68,6 +70,9 @@ public class Pedido implements Serializable {
         return importeTotal;
     }
 
+    /**
+     * Devuelve la lista de productos del pedido.
+     */
     public ArrayList<Producto> getProductos(){
         return productos;
     }
@@ -81,6 +86,8 @@ public class Pedido implements Serializable {
 
     /**
      * Añade un producto al pedido.
+     *
+     * @param producto producto que se quiere añadir
      */
     public boolean agregarProducto(Producto producto) {
 
@@ -100,6 +107,8 @@ public class Pedido implements Serializable {
 
     /**
      * Elimina un producto del pedido según su posición.
+     *
+     * @param posicion posición del producto en la lista
      */
     public boolean eliminarProducto(int posicion) {
 
@@ -125,6 +134,9 @@ public class Pedido implements Serializable {
     /**
      * Método para pagar el pedido.
      * Dependiendo del tipo de pago se usa un método distinto.
+     *
+     * @param tipoPago tipo de pago: 1 efectivo, 2 tarjeta, 3 cuenta
+     * @param dato dato necesario para el pago
      */
     public boolean pagar(int tipoPago, String dato) {
 

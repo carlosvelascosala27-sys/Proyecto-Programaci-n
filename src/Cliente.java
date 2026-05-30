@@ -5,6 +5,9 @@ import java.util.Date;
 /**
  * Clase que representa un cliente del sistema.
  * Guarda los datos del cliente y su historial de pedidos.
+ *
+ * @author Carlos Velasco Sala
+ * @since 1.0
  */
 public class Cliente implements Serializable {
 
@@ -18,6 +21,11 @@ public class Cliente implements Serializable {
     /**
      * Constructor de la clase Cliente.
      * Recibe los datos básicos del cliente.
+     *
+     * @param nombre nombre del cliente
+     * @param apellidos apellidos del cliente
+     * @param telefono teléfono del cliente
+     * @param direccion dirección del cliente
      */
     public Cliente(String nombre,  String apellidos, String telefono, String direccion) {
 
@@ -36,6 +44,9 @@ public class Cliente implements Serializable {
         return telefono;
     }
 
+    /**
+     * Devuelve el historial de pedidos del cliente.
+     */
     public ArrayList<Pedido> getHistorial(){
         return historial;
     }
@@ -43,6 +54,8 @@ public class Cliente implements Serializable {
     /**
      * Añade un pedido al historial del cliente.
      * Solo se añade si el pedido es válido y está pagado.
+     *
+     * @param pedido pedido que se quiere añadir
      */
     public boolean agregarPedido(Pedido pedido) {
 

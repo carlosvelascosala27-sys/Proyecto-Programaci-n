@@ -2,6 +2,9 @@ import java.io.Serializable;
 /**
  * Clase que representa un producto que se puede pedir.
  * Cada producto tiene un nombre y un precio.
+ *
+ * @author Carlos Velasco Sala
+ * @since 1.0
  */
 public class Producto implements Serializable {
 
@@ -14,6 +17,9 @@ public class Producto implements Serializable {
     /**
      * Constructor de la clase Producto.
      * Recibe el nombre y el precio del producto.
+     *
+     * @param nombre nombre del producto
+     * @param precio precio del producto
      */
     public Producto(String nombre, double precio) {
 
@@ -39,6 +45,8 @@ public class Producto implements Serializable {
     /**
      * Permite cambiar el nombre del producto.
      * El nombre se guarda en mayúsculas.
+     *
+     * @param nombre nuevo nombre del producto
      */
     public void setNombre(String nombre) {
         this.nombre = nombre.toUpperCase();
@@ -53,6 +61,8 @@ public class Producto implements Serializable {
 
     /**
      * Permite cambiar el precio del producto.
+     *
+     * @param precio nuevo precio del producto
      */
     public void setPrecio(double precio) {
         this.precio = precio;
